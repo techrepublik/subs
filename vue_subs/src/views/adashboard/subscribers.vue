@@ -1793,12 +1793,13 @@ export default {
                                     </BCol>
                                 </BRow>
                                 <BRow class=" mb-1">
-                                    <label class="col-sm-2 col-form-label form-control-sm" for="type">Schedule</label>
+                                    <label class="col-sm-2 col-form-label form-control-sm" for="type">Type</label>
                                     <BCol class="col-sm-6">
                                         <select v-model="bill.bill_type" class="form-select form-select-sm" id="type">
                                             <option value="">---</option>
-                                            <option value="start">Sart</option>
-                                            <option value="end">End</option>
+                                            <option value="net">Internet</option>
+                                            <option value="foc">FOC</option>
+                                            <option value="labor">Labor</option>
                                             <option value="others">Others</option>
                                         </select>
                                     </BCol>
@@ -2052,7 +2053,7 @@ export default {
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="analytics-tab-4" data-bs-toggle="tab" data-bs-target="#analytics-tab-4-pane" type="button" role="tab" aria-controls="analytics-tab-4-pane" aria-selected="false">
-                                    <span class="d-flex align-items-center gap-2">Tickets <span class="avtar rounded-circle bg-light-danger">{{ tickets.length }}</span></span>
+                                    <span class="d-flex align-items-center gap-2">Tickets <span class="avtar rounded-circle bg-light-danger">{{ tickets?.length }}</span></span>
                                 </button>
                             </li>
                         </ul>
@@ -2350,8 +2351,8 @@ export default {
                                                         <BCol>
                                                             <h6 class="mb-1">{{ pay.payment_type }}</h6>
                                                             <p class="text-muted f-12 mb-0">
-                                                                <span v-if="pay.cheque_no.length"> {{ pay.cheque_no}} </span> 
-                                                                <span v-if="pay.reference_no.length"> | {{ pay.reference_no }}</span>
+                                                                <span v-if="pay.cheque_no?.length"> {{ pay.cheque_no}} </span> 
+                                                                <span v-if="pay.reference_no?.length"> | {{ pay.reference_no }}</span>
                                                             </p>
                                                         </BCol>
                                                     </BRow>

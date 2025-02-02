@@ -212,11 +212,11 @@
             <BCol no-body class="table-card">
                  <!-- Regions Section -->
                 <BRow class="">
-                    <BCol class="col-lg-6">
+                    <BCol class="col-lg-10">
                         
                             <h2>Regions</h2>
                             <form @submit.prevent="addRegion">
-                                <BRow class=" mb-3">
+                                <BRow class="mb-6">
                                     <label for="region" class="col-sm-2 col-form-label">Region name</label>
                                     <BCol class="col-sm-4">
                                         <input v-model="newRegion" placeholder="Enter a region." class="form-control" id="region" required /> 
@@ -229,12 +229,11 @@
                                 <BCol md="6">
                                     <BCard no-body>
                                         <BCardHeader>
-                                            <h5 class="mb-2">Basic example</h5><BRow class=" mb-3"></BRow>
-                                            <small class="m-0">The most basic list group is an unordered list with list items and the proper
-                                                classes</small>
+                                            <h5 class="mb-2">Regions</h5><BRow class=" mb-3"></BRow>
+                                            <small class="m-0">List of regions.</small>
                                         </BCardHeader>
                                         <BCardBody>
-                                            <BListGroup v-for="region in regions" :key="region.id" class="d-flex">
+                                            <BListGroup v-for="region in regions" :key="region.id" class="d-flex mt-2">
                                                 <BListGroupItem>
                                                     <div v-if="editedRegion?.id === region.id" class="d-flex w-100">
                                                         <input
@@ -253,10 +252,10 @@
                                                         </button>
                                                     </div>
                                                     <div v-else>
-                                                        <span> {{ region.name }} </span>
-                                                        <span class="float-end"><a href="#" @click="deleteRegion(region.id)" >Delete</a></span>
+                                                        <span class="me-4"> {{ region.name }} </span>
+                                                        <span class="float-end ms-2"><a href="#" @click="deleteRegion(region.id)" >Delete</a></span>
                                                         <span class="float-end me-2"><a href="#" @click="editRecord(region, 0)" >Edit</a></span>
-                                                        <span class="float-end me-2"><a href="#"  @click="selectRegion(region)">View Provinces</a></span>
+                                                        <span class="float-end me-2"><a href="#"  @click="selectRegion(region)">Provinces</a></span>
                                                     </div>
                                                 </BListGroupItem>
                                             </BListGroup>
@@ -269,7 +268,7 @@
                             <BRow v-if="selectedRegion" class="mt-4">
                                 <hr />
                                 <form @submit.prevent="addProvince">
-                                    <BRow class=" mb-3">
+                                    <BRow class=" mb-6">
                                         <label for="province" class="col-sm-2 col-form-label">Province name</label>
                                         <BCol class="col-sm-4">
                                             <input v-model="newProvince" placeholder="Enter a province." class="form-control" id="province" required /> 
@@ -281,11 +280,10 @@
                                     <BCard no-body>
                                         <BCardHeader>
                                             <h5 class="mb-2">Provinces in {{ selectedRegion.name }}</h5><BRow class=" mb-3"></BRow>
-                                            <small class="m-0">The most basic list group is an unordered list with list items and the proper
-                                                classes</small>
+                                            <small class="m-0">List of provinces</small>
                                         </BCardHeader>
                                         <BCardBody>
-                                            <BListGroup v-for="prov in provinces" :key="prov.id" class="d-flex">
+                                            <BListGroup v-for="prov in provinces" :key="prov.id" class="d-flex mt-2">
                                                 <BListGroupItem>
                                                     <div v-if="editedProvince?.id===prov.id" class="d-flex w-100">
                                                         <input
@@ -304,10 +302,10 @@
                                                         </button>
                                                     </div>
                                                     <div v-else>
-                                                        {{ prov.name }}
+                                                        <span class="me-4"> {{ prov.name }}</span>
                                                         <span class="float-end"><a href="#" @click="deleteProvince(prov.id)" >Delete</a></span>
                                                         <span class="float-end me-2"><a href="#" @click="editRecord(prov, 1)" >Edit</a></span>
-                                                        <span class="float-end me-2"><a href="#" @click="selectProvince(prov)">View Municipalities</a></span>
+                                                        <span class="float-end me-2"><a href="#" @click="selectProvince(prov)">Municipalities</a></span>
                                                     </div>
                                                 </BListGroupItem>
                                             </BListGroup>
@@ -321,7 +319,7 @@
                             <BRow v-if="selectedProvince" class="mt-4">
                                 <hr />
                                 <form @submit.prevent="addMunicipality">
-                                    <BRow class=" mb-3">
+                                    <BRow class=" mb-6">
                                         <label for="municipality" class="col-sm-2 col-form-label">Municipality name</label>
                                         <BCol class="col-sm-4">
                                             <input v-model="newMunicipality" placeholder="Enter a municipality." class="form-control" id="municipality" required /> 
@@ -333,11 +331,10 @@
                                     <BCard no-body>
                                         <BCardHeader>
                                             <h5 class="mb-2">Municipality in {{ selectedProvince.name }}</h5><BRow class=" mb-3"></BRow>
-                                            <small class="m-0">The most basic list group is an unordered list with list items and the proper
-                                                classes</small>
+                                            <small class="m-0">List of municipalities</small>
                                         </BCardHeader>
                                         <BCardBody>
-                                            <BListGroup v-for="muni in municipalities" :key="muni.id" class="d-flex">
+                                            <BListGroup v-for="muni in municipalities" :key="muni.id" class="d-flex mt-2">
                                                 <BListGroupItem>
                                                     <div v-if="editedMunicipality?.id===muni.id" class="d-flex w-100">
                                                         <input
@@ -356,10 +353,10 @@
                                                         </button>
                                                     </div>
                                                     <div v-else>
-                                                        {{ muni.name }}
+                                                        <span class="me-4">{{ muni.name }}</span> 
                                                         <span class="float-end"><a href="#" @click="deleteMunicipality(muni.id)" >Delete</a></span>
                                                         <span class="float-end me-2"><a href="#" @click="editRecord(muni, 2)" >Edit</a></span>
-                                                        <span class="float-end me-2"><a href="#"  @click="selectMunicipality(muni)">View Barangays</a></span>
+                                                        <span class="float-end me-2"><a href="#"  @click="selectMunicipality(muni)">Barangays</a></span>
                                                     </div>
                                                 </BListGroupItem>
                                             </BListGroup>
@@ -373,7 +370,7 @@
                             <BRow v-if="selectedMunicipality" class="mt-4">
                                 <hr />
                                 <form @submit.prevent="addBarangay">
-                                    <BRow class=" mb-3">
+                                    <BRow class=" mb-6">
                                         <label for="barangay" class="col-sm-2 col-form-label">Barangay name</label>
                                         <BCol class="col-sm-4">
                                             <input v-model="newBarangay" placeholder="Enter a barangay." class="form-control" id="barangay" required /> 
@@ -385,11 +382,10 @@
                                     <BCard no-body>
                                         <BCardHeader>
                                             <h5 class="mb-2">Barangays in {{ selectedMunicipality.name }}</h5><BRow class=" mb-3"></BRow>
-                                            <small class="m-0">The most basic list group is an unordered list with list items and the proper
-                                                classes</small>
+                                            <small class="m-0">List of barangays</small>
                                         </BCardHeader>
                                         <BCardBody>
-                                            <BListGroup v-for="bara in barangays" :key="bara.id" class="d-flex">
+                                            <BListGroup v-for="bara in barangays" :key="bara.id" class="d-flex mt-2">
                                                 <BListGroupItem>
                                                     <div v-if="editedBarangay?.id===bara.id" class="d-flex w-100">
                                                         <input
@@ -408,7 +404,7 @@
                                                         </button>
                                                     </div>
                                                     <div v-else>
-                                                        {{ bara.name }}
+                                                        <span class="me-4">{{ bara.name }}</span> 
                                                         <span class="float-end"><a href="#" @click="deleteBarangay(bara.id)" >Delete</a></span>
                                                         <span class="float-end me-2"><a href="#" @click="editRecord(bara, 3)" >Edit</a></span>
                                                     </div>

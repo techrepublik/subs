@@ -49,7 +49,18 @@ export default [
         meta: { title: "Josh" },
         component: () => import("../views/live-preview/josh.vue"),
     },
-
+    {
+        path: "/profile",
+        name: "profile",
+        meta: { title: "Profile" },
+        component: () => import("../views/adashboard/auth/profile.vue"),
+    },
+    {
+        path: "/profiles",
+        name: "profiles",
+        meta: { title: "Profiles" },
+        component: () => import("../views/adashboard/auth/profiles.vue"),
+    },
     {
         path: "/regions",
         name: "region",

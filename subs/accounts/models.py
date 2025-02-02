@@ -88,12 +88,17 @@ class Employee(models.Model):
             img.save(picture_path, format='JPEG', quality=90)
 
     def generate_employee_number(self):
-        emp_no = ''.join([str(random.randint(0,10) for _ in range(10))])
+        emp_no = ''.join(str(random.randint(0, 9)) for _ in range(10))
 
-        while Employee.objects.filter(emp_no=emp_no).exists():
-            emp_no = ''.join([str(random.randint(0,9) for _ in range(10))])
+        # Ensure id_no is unique
+        while Employee.objects.filter(id_no=id_no).exists():
+            id_no = ''.join(str(random.randint(0, 9)) for _ in range(10))
 
-        return emp_no
+
+        year = datetime.datetime.now().year
+        month = datetime.datetime.now().month
+
+        return F'{id_no}{year}{month}' 
     
 
     def __str__(self):

@@ -126,7 +126,7 @@ class Billing(models.Model):
     is_paid = models.BooleanField(default=False)
     is_partial = models.BooleanField(default=False)
     bill_schedule = models.CharField(max_length=10, choices=[("start","Start"), ("end","End"), ("others","Others")], default="start", blank=True, null=True)
-    bill_type = models.CharField(max_length=10, choices=[("net","Internet"), ("foc","FOC"), ("labor","labor"),("others","Others")], default="net", blank=True, null=True)
+    bill_type = models.CharField(max_length=10, choices=[("net","Internet"), ("foc","FOC"), ("labor","Labor"),("others","Others")], default="net", blank=True, null=True)
     notice = models.CharField(max_length=50, choices=[("disconnection", "Disconnection"), ("updated", "Updated"),("disconnected","Disconnected"),("warning","Warning")], default="updated")
     remarks = models.CharField(max_length=200, blank=True, null=True)
     billing_no = models.CharField(max_length=15, unique=True, editable=False)

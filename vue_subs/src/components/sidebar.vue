@@ -255,6 +255,22 @@ export default {
                         <span class="pc-mtext"> Josh</span>
                     </router-link>
                 </li>
+                <li class="pc-item" :class="{ 'active': this.$route.path === '/profile' }">
+                    <router-link to="/profile" class="pc-link">
+                        <span class="pc-micon">
+                            <i class="ph-duotone ph-projector-screen-chart"></i>
+                        </span>
+                        <span class="pc-mtext"> Profile</span>
+                    </router-link>
+                </li>
+                <li class="pc-item" :class="{ 'active': this.$route.path === '/profiles' }">
+                    <router-link to="/profiles" class="pc-link">
+                        <span class="pc-micon">
+                            <i class="ph-duotone ph-projector-screen-chart"></i>
+                        </span>
+                        <span class="pc-mtext"> Profiles</span>
+                    </router-link>
+                </li>
                 <li class="pc-item" :class="{ 'active': this.$route.path === '/regions' }">
                     <router-link to="/regions" class="pc-link">
                         <span class="pc-micon">
@@ -276,7 +292,7 @@ export default {
                         <span class="pc-micon">
                             <i class="ph-duotone ph-projector-screen-chart"></i>
                         </span>
-                        <span class="pc-mtext"> Subscription Plans</span>
+                        <span class="pc-mtext"> Plans</span>
                     </router-link>
                 </li>
                 <li class="pc-item" :class="{ 'active': this.$route.path === '/modems' }">
@@ -308,7 +324,7 @@ export default {
                         <span class="pc-micon">
                             <i class="ph-duotone ph-projector-screen-chart"></i>
                         </span>
-                        <span class="pc-mtext"> Subscriptions</span>
+                        <span class="pc-mtext"> Billings</span>
                     </router-link>
                 </li>
                 <li class="pc-item" :class="{ 'active': this.$route.path === '/collections' }">

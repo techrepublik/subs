@@ -177,15 +177,9 @@ class PaymentViewSet(viewsets.ModelViewSet):
     parser_classes = (MultiPartParser, FormParser)
 
     def get_queryset(self):
-        # queryset = Payment.objects.all()
+        queryset = Payment.objects.all()
         # Fetch all Billing records and prefetch Payment records (LEFT JOIN behavior)
-        queryset = Billing.objects.prefetch_related(
-            Prefetch(
-                'payments',  # Reverse relation from Payment to Billing
-                queryset=Payment.objects.select_related('subscription', 'subscription__subscriber__user')
-            )
-        )
-
+       
         # filter by id
         id = self.request.query_params.get("id")
 
@@ -200,6 +194,7 @@ class PaymentViewSet(viewsets.ModelViewSet):
 
         # get the user_id
         user_id = self.request.query_params.get('user_id')
+        
 
         # Convert start_date and end_date to datetime
         try:
@@ -213,20 +208,23 @@ class PaymentViewSet(viewsets.ModelViewSet):
         # Apply date range filtering for payments all
         payment_filters = Q()
         if start_date and end_date:
-            payment_filters &= Q(payments__payment_date__date__range=(start_date, end_date))
+            payment_filters &= Q(queryset__payment_date__date__range=(start_date, end_date))
         elif start_date:
-            payment_filters &= Q(payments__payment_date__date__gte=start_date)
+            payment_filters &= Q(queryset__payment_date__date__gte=start_date)
         elif end_date:
-            payment_filters &= Q(payments__payment_date__date__lte=end_date)
+            payment_filters &= Q(queryset__payment_date__date__lte=end_date)
 
         if user_id:
             # payment_filters &= Q(payment_set__received_by=user_id)
 
             if id:
                 queryset = queryset.filter(bill_no=id)
+        else:
+            if id:
+                queryset = queryset.filter(bill_no=id)
 
         # Ensure we include Billing records even if they have no payments
-        queryset = queryset.filter(payment_filters | Q(payments__isnull=True))
+        queryset = queryset.filter(payment_filters)
 
         return queryset
     
